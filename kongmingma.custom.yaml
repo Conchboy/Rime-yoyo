@@ -1,0 +1,43 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: kongmingma
+  name: 空明码-并击
+  version: 2025/8/8
+  author:
+    - 空明
+    - zhanghaozhecn(schema编写)
+  description: |
+    空明码，是专门并击编码方案，有大词库(38万)，码长短(平均0.8)，8万高频词重码少(0.09%)的特点。中州韵是一款支持键盘并击的平台件，可以自定义词库编码，并击平台。
+  dependencies:
+
+ punctuator:
+    half_shape:
+      "#": "#"
+      "`": "`"
+      "~": "~"
+      "@": "@"
+      "=": "="
+      "/": ["/", "÷"]
+      '\': ["、", '\']
+      "'": {pair: ["「", "」"]}
+     "[": ["【", "["]
+      "]": ["】", "]"] # 自定义成对
+      "$": ["¥", "$", "€", "£", "¢", "¤"]
+      "<": ["《", "〈", "«", "<"]
+      ">": ["》", "〉", "»", ">"]
+    full_shape:
+      "'": { pair: ["‘", "’"] }
+      '"': { pair: ["“", "”"] }
+      "(": { pair: ["（", "）"] }
+      "[": { pair: ["【", "】"] }
+      "{": { pair: ["『", "』"] }
+
+key_binder:
+  bindings:
+    # 自定义键位
+    - { when: always, accept: "Control+j", toggle: ascii_mode } # Control + J键切换中英文
+    - { when: composing, accept: Tab, send: 2 } #使用Tab二选
+    - { when: composing, accept: "[", send: 3 } #使用[三选 Bracket_L
+    - { when: composing, accept: "`", send: 4 } #使用`四选 grave
